@@ -72,7 +72,11 @@ app.post('/status/update/:tweet', function(req, res){
             console.log(response);
             res.json({
                 message: 'tweet success!!'
-            })
+            });
+        } else {
+            res.json({
+                message: 'tweet failured!'
+            });
         }
     });
 });
@@ -84,8 +88,33 @@ app.get('/statuses/user_timeline/:user', function(req, res){
             res.send(tweets);
         } else {
             res.json({
-                message: 'error! tweet failured!!'
-            })
+                message: 'error! failured!!'
+            });
         }
+    });
+});
+
+//現在ログインしているホームタイムラインをjsonでとってくるよ
+app.get('/statuses/home_timeline', function(req, res){
+    client.get('statuses/home_timeline', function(error, tweets, response){
+        if(!error){
+            res.send(tweets);
+        } else {
+            res.send(response);
+        }
+    });
+});
+
+//ふぁぼります
+app.post('/favorites/create/:id', function(req, res){
+    client.post('favorites/create', { id: req.params.id }, function(error, response){
+            res.send(response)
+    });
+});
+
+//リツイートします
+app.post('/statuses/retweet/:id', function(req, res){
+    client.post('statuses/retweet', { id: req.params.id } ,function(error, response){
+        res.send(response);
     });
 });
