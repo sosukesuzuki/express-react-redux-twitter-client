@@ -17,6 +17,7 @@ var app = express();
 app.listen(3000);
 
 var _requestSecret;
+var _requestToken;
 var _accessToken = 'empty';
 var _accessSecret = 'empty';
 
@@ -29,13 +30,15 @@ app.get("/request-token", function(req, res) {
             res.status(500).send(err);
         else {
             _requestSecret = requestSecret;
+            _requestToken = requestToken
+            console.log(requestSecret)
             res.redirect("https://api.twitter.com/oauth/authenticate?oauth_token=" + requestToken);
             //リダイレクトしてaccess_tokenも発行
         }
     });
 });
 
-//requiest-token発行後のリダイレクト先
+//request-token発行後のリダイレクト先
 app.get("/access-token", function(req, res) {
     var requestToken = req.query.oauth_token,
         verifier = req.query.oauth_verifier;
@@ -48,7 +51,6 @@ app.get("/access-token", function(req, res) {
                 if (err) {
                     res.status(500).send(err);
                 } else {
-                    res.send(user);
                     _accessToken = accessToken;
                     _accessSecret = accessSecret;
                     console.log('Accesstoken: ' + _accessToken + '/Accesssecret: ' + _accessSecret);
@@ -59,6 +61,7 @@ app.get("/access-token", function(req, res) {
                         access_token_key: _accessToken,
                         access_token_secret: _accessSecret
                     });
+                    res.redirect('http://localhost:8080');
                 }
             });
     });
@@ -78,6 +81,13 @@ app.post('/status/update/:tweet', function(req, res){
                 message: 'tweet failured!'
             });
         }
+    });
+});
+
+//指定されたidのツイートを削除する
+app.post('/statuses/destroy/:id', function(req, res){
+    client.post('statuses/destroy', {id: req.params.id}, function(error, response){
+        res.send(response);
     });
 });
 
