@@ -4,9 +4,6 @@
 import * as types from '../constans/ActionTypes'
 import request from 'superagent'
 
-
-let response;
-
 export function getMyProfile(){
     return {
         type: types.GET_MY_PROFILE

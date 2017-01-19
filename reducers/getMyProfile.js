@@ -1,7 +1,7 @@
 /**
  * Created by suzuki on 2017/01/18.
  */
-import { GET_MY_PROFILE, SUCCESS_GET_PROFILE } from '../constans/ActionTypes'
+import { GET_MY_PROFILE, SUCCESS_GET_PROFILE} from '../constans/ActionTypes'
 
 export default function getMyProfile(state = [], action){
     switch (action.type){

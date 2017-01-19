@@ -4,7 +4,7 @@ class Header extends Component {
     render(){
         return(
             <header className="header">
-                <h1>Twitterクライアントが作りたいってずっと言ってる</h1>
+                <h1>Twitterクライアント</h1>
             </header>
         )
     }
