@@ -43,3 +43,17 @@ button{
     height: 100px;
     width: 90%;
 }
+
+#userBox {
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    width: 30%;
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+}

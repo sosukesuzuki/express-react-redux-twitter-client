@@ -23,6 +23,12 @@ var _accessSecret = 'empty';
 
 var client;
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //リクエストトークン発行
 app.get("/request-token", function(req, res) {
     twitter.getRequestToken(function(err, requestToken, requestSecret) {
@@ -128,3 +134,27 @@ app.post('/statuses/retweet/:id', function(req, res){
         res.send(response);
     });
 });
+
+
+//指定したスクリーンネームのuserの情報をjsonで受け取る
+app.get('/user/show/:screenName', function(req, res){
+    client.get('users/show', { screen_name: req.params.screenName }, function (error, response) {
+        if(error){
+            res.send(error)
+        } else {
+            res.json(response)
+        }
+    });
+})
+
+
+//己のprofile
+app.get('/account/verify_credentials', function(req, res){
+    client.get('account/verify_credentials', function(error, response){
+        if(error){
+            res.send(error)
+        } else {
+            res.json(response)
+        }
+    })
+})

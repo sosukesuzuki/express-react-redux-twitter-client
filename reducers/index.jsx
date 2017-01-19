@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import login from './login'
 import tweet from './tweet'
+import getMyProfile from './getjson'
 
 const rootReducer = combineReducers({
     login,
-    tweet
+    tweet,
+    getMyProfile
 })
 
 console.log(rootReducer(undefined, { type: null }));
