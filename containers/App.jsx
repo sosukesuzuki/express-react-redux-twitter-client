@@ -5,6 +5,7 @@ import * as LoginAction from '../actions/login'
 import * as TweetAction from '../actions/tweet'
 import * as GetMyProfileAction from '../actions/getMyProfile'
 import * as GetHomeTimeLineAction from '../actions/getHomeTimeLine'
+import * as RTAndFavAction from '../actions/retweetAndFav'
 import Header from '../components/Header'
 import TweetArea from '../components/TweetArea'
 import UserProfile from '../components/UserProfile'
@@ -17,11 +18,6 @@ class App extends Component {
         super(props)
         this.props.actions.getMyProfileAsync()
         this.props.actions.getHomeTimeLineAsync()
-    }
-
-    componentDidMount(){
-        console.log(this.props)
-        console.log("componentDidMount props!")
     }
 
   render() {
@@ -43,7 +39,7 @@ class App extends Component {
                 <TweetArea newTweet={this.props.actions.tweetAsync}/>
                 <UserProfile MyProfile={n === 1 ? {profile_image_url: 'おうんちうんち', name: 'お名前', screen_name: 'うんち', description: 'ご説明うんち', location: '場所うんち'} : this.props.profile.myProfile}/>
             </div>
-            <TL TimeLineJson={m === 1 ? [mock] : this.props.homeTimeLine}/>
+            <TL TimeLineJson={m === 1 ? [mock] : this.props.homeTimeLine} rt={this.props.actions.rtTweetAsync} fav={this.props.actions.favoriteTweetAsync}/>
         </div>
         )
     }
@@ -62,7 +58,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(Object.assign({}, LoginAction, TweetAction, GetMyProfileAction, GetHomeTimeLineAction),  dispatch)
+        actions: bindActionCreators(Object.assign({}, LoginAction, TweetAction, GetMyProfileAction, GetHomeTimeLineAction, RTAndFavAction),  dispatch)
     }
 }
 

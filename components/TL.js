@@ -13,7 +13,7 @@ export default class TL extends Component {
 
     render(){
         const listItems = this.props.TimeLineJson.map((tweet) =>
-            <li><TLdata profile_image_url={tweet.user.profile_image_url} name={tweet.user.name} screen_name={"@" + tweet.user.screen_name} text={tweet.text}/></li>
+            <li><TLdata id_str={tweet.id_str} profile_image_url={tweet.user.profile_image_url} name={tweet.user.name} screen_name={"@" + tweet.user.screen_name} text={tweet.text} rt={this.props.rt} fav={this.props.fav}/></li>
         )
         return(
             <div id="HomeTimeLine">
@@ -26,5 +26,7 @@ export default class TL extends Component {
 }
 
 TL.propTypes = {
-    TimeLineJson: PropTypes.array.isRequired
+    TimeLineJson: PropTypes.array.isRequired,
+    rt: PropTypes.func.isRequired,
+    fav: PropTypes.func.isRequired
 }

@@ -18,19 +18,6 @@ export function deleteTweet(id){
     }
 }
 
-export function favoriteTweet(id){
-    return {
-        type: types.FAVORITE_TWEET,
-        id: id
-    }
-}
-
-export function rtTweet(id){
-    return {
-        type: types.RT_TWEET,
-        id: id
-    }
-}
 
 export function tweetAsync(text){
     return function(dispatch){
@@ -41,7 +28,7 @@ export function tweetAsync(text){
                 if(err){
                     console.log(err)
                 } else {
-                    console.log("success!")
+                    console.log(res)
                 }
             });
     }
