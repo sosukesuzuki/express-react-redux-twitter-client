@@ -102,7 +102,7 @@ button {
 }
 
 .HomeTimeLine {
-    padding-top: 15%;
+    padding-top: 18%;
     background-color: #dde1da;
 }
 
@@ -115,5 +115,11 @@ button {
 }
 
 #TLButton {
+    background: -webkit-gradient(linear, left top, left bottom,from(#1cccad), color-stop(0.5,#82ccb9), color-stop(0.5,#a3ccba),  to(rgba(8, 204, 178, 1)));
     margin-left: 3%;
+    position: fixed;
+}
+
+#ActualTL {
+    padding-top: 2%;
 }

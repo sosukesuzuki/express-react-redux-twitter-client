@@ -24,8 +24,8 @@ export default class TLdata extends Component {
                 <h2>{this.props.name}</h2>
                 <h3>{this.props.screen_name}</h3>
                 <p>{this.props.text}</p>
-                <button onClick={this.retweet}>リツイート</button>
-                <button onClick={this.favorite}>お気に入り</button>
+                <button onClick={this.retweet}>{"リツイート " + this.props.retweet_count}</button>
+                <button onClick={this.favorite}>{"お気に入り " + this.props.favorite_count}</button>
             </div>
         )
     }
@@ -38,5 +38,7 @@ TLdata.propTypes = {
     screen_name : PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     rt: PropTypes.func.isRequired,
-    fav: PropTypes.func.isRequired
+    fav: PropTypes.func.isRequired,
+    favorite_count: PropTypes.number.isRequired,
+    retweet_count: PropTypes.number.isRequired
 }

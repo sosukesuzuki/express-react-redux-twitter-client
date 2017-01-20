@@ -11,12 +11,12 @@ export default class TL extends Component {
 
     render(){
         const listItems = this.props.TimeLineJson.map((tweet) =>
-            <li><TLdata id_str={tweet.id_str} profile_image_url={tweet.user.profile_image_url} name={tweet.user.name} screen_name={"@" + tweet.user.screen_name} text={tweet.text} rt={this.props.rt} fav={this.props.fav}/></li>
+            <li><TLdata id_str={tweet.id_str} profile_image_url={tweet.user.profile_image_url} name={tweet.user.name} screen_name={"@" + tweet.user.screen_name} text={tweet.text} rt={this.props.rt} fav={this.props.fav} favorite_count={tweet.favorite_count} retweet_count={tweet.retweet_count}/></li>
         )
         return(
             <div className="HomeTimeLine">
                 <button onClick={this.props.updateTimeLine} id="TLButton">TL更新</button>
-                <ul>{listItems}</ul>
+                <ul id="ActualTL">{listItems}</ul>
             </div>
         )
     }
