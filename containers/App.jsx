@@ -38,10 +38,9 @@ class App extends Component {
                 <div className="left">
                     <TweetArea newTweet={this.props.actions.tweetAsync} updateHomeTimeLine={this.props.actions.getHomeTimeLineAsync}/>
                     <UserProfile MyProfile={n === 1 ? {profile_image_url: 'おうんちうんち', name: 'お名前', screen_name: 'うんち', description: 'ご説明うんち', location: '場所うんち'} : this.props.profile.myProfile}/>
-                    <button onClick={this.props.actions.logoutAsync}>ログアウト</button>
                 </div>
              </div>
-            <TL TimeLineJson={m === 1 ? [mock] : this.props.homeTimeLine} rt={this.props.actions.rtTweetAsync} fav={this.props.actions.favoriteTweetAsync}/>
+            <TL TimeLineJson={m === 1 ? [mock] : this.props.homeTimeLine} rt={this.props.actions.rtTweetAsync} fav={this.props.actions.favoriteTweetAsync} updateTimeLine={this.props.actions.getHomeTimeLineAsync}/>
         </div>
         )
     }

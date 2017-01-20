@@ -7,8 +7,6 @@ import TLdata from './TLdata'
 export default class TL extends Component {
     constructor(props){
         super(props)
-        console.log(props.TimeLineJson)
-        console.log("チムぃね")
     }
 
     render(){
@@ -17,6 +15,7 @@ export default class TL extends Component {
         )
         return(
             <div className="HomeTimeLine">
+                <button onClick={this.props.updateTimeLine} id="TLButton">TL更新</button>
                 <ul>{listItems}</ul>
             </div>
         )
@@ -28,5 +27,6 @@ export default class TL extends Component {
 TL.propTypes = {
     TimeLineJson: PropTypes.array.isRequired,
     rt: PropTypes.func.isRequired,
-    fav: PropTypes.func.isRequired
+    fav: PropTypes.func.isRequired,
+    updateTimeLine: PropTypes.func.isRequired
 }

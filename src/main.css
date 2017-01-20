@@ -1,5 +1,6 @@
+
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: serif;
 }
 
 body {
@@ -9,7 +10,8 @@ body {
 }
 
 Header {
-    background-color: deepskyblue;
+    background: -moz-linear-gradient(top,#09C 0%,#09C 50%,#069 50%,#069);
+    background: -webkit-gradient(linear, left top, left bottom,from(#09C), color-stop(0.5,#09C), color-stop(0.5,#069),  to(#069));
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -81,6 +83,15 @@ ul{
     width: 20%;
 }
 
+button {
+    background: -moz-linear-gradient(top,#09C 0%,#09C 50%,#069 50%,#069);
+    background: -webkit-gradient(linear, left top, left bottom,from(#09C), color-stop(0.5,#09C), color-stop(0.5,#069),  to(#069));
+    border: 1px solid #DDD;
+    color: #FFF;
+    width: 100px;
+    padding: 10px 0;
+}
+
 #container {
     position: fixed;
     z-index:1;
@@ -88,12 +99,11 @@ ul{
     width: 100%;
     height: auto;
     overflow: hidden;
-    background-color: aliceblue;
 }
 
 .HomeTimeLine {
-    padding-top: 22%;
-    background-color: cornsilk;
+    padding-top: 15%;
+    background-color: #dde1da;
 }
 
 #imageAndNameAndScreenname {
@@ -102,4 +112,8 @@ ul{
 
 #descriptionAndLocation {
     float: left;
+}
+
+#TLButton {
+    margin-left: 3%;
 }
