@@ -26,3 +26,17 @@ export function logout (){
             });
     }
 }
+
+export function logoutAsync(){
+    return function(dispatch){
+        dispatch(logout)
+        request.post('http://127.0.0.1:3000/account/end_session')
+            .end(function(err, res){
+                if(err){
+                    console.log(err)
+                } else {
+                    console.log(res)
+                }
+            })
+    }
+}

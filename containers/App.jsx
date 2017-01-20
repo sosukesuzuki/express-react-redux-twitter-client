@@ -19,7 +19,6 @@ class App extends Component {
         this.props.actions.getMyProfileAsync()
         this.props.actions.getHomeTimeLineAsync()
     }
-
   render() {
       const mock = {
           text: "",
@@ -34,11 +33,14 @@ class App extends Component {
         n++
         m++
         return(<div>
-            <Header/>
-            <div className="left">
-                <TweetArea newTweet={this.props.actions.tweetAsync}/>
-                <UserProfile MyProfile={n === 1 ? {profile_image_url: 'おうんちうんち', name: 'お名前', screen_name: 'うんち', description: 'ご説明うんち', location: '場所うんち'} : this.props.profile.myProfile}/>
-            </div>
+            <div id="container">
+                <Header/>
+                <div className="left">
+                    <TweetArea newTweet={this.props.actions.tweetAsync} updateHomeTimeLine={this.props.actions.getHomeTimeLineAsync}/>
+                    <UserProfile MyProfile={n === 1 ? {profile_image_url: 'おうんちうんち', name: 'お名前', screen_name: 'うんち', description: 'ご説明うんち', location: '場所うんち'} : this.props.profile.myProfile}/>
+                    <button onClick={this.props.actions.logoutAsync}>ログアウト</button>
+                </div>
+             </div>
             <TL TimeLineJson={m === 1 ? [mock] : this.props.homeTimeLine} rt={this.props.actions.rtTweetAsync} fav={this.props.actions.favoriteTweetAsync}/>
         </div>
         )

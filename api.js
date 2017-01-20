@@ -145,7 +145,7 @@ app.get('/user/show/:screenName', function(req, res){
             res.json(response)
         }
     });
-})
+});
 
 
 //己のprofile
@@ -156,5 +156,17 @@ app.get('/account/verify_credentials', function(req, res){
         } else {
             res.json(response)
         }
-    })
-})
+    });
+});
+
+//ログアウトします
+app.post('/account/end_session', function(req, res){
+    client.post('account/end_session', function(error, response){
+        if(error){
+            res.send(error)
+        } else {
+            res.send(response)
+            res.redirect("https://api.twitter.com/oauth/authenticate?oauth_token=" + _requestToken);
+        }
+    });
+});
